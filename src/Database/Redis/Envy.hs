@@ -41,6 +41,9 @@ connectInfoFromEnv = connectInfoFromEnvWithDefault R.defaultConnectInfo
 
 -- | A variant of 'connectInfoFromEnv' which you can provide the
 -- default value by yourself.
+--
+-- This is necessary to implement the instance of 'Env.FromEnv' for
+-- 'R.ConnectInfo' correctly.
 connectInfoFromEnvWithDefault :: R.ConnectInfo -> Parser R.ConnectInfo
 connectInfoFromEnvWithDefault def = R.ConnInfo
   <$> envMaybe "REDIS_HOST" .!= R.connectHost def
