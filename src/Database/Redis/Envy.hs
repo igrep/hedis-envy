@@ -10,8 +10,7 @@ import           Data.Scientific (Scientific)
 import           Data.Time       (NominalDiffTime)
 import           Data.Typeable   (Typeable)
 import qualified Database.Redis  as R
-import           System.Envy     (Parser, Var, env, envMaybe, fromVar, toVar,
-                                  (.!=))
+import           System.Envy     (Parser, Var, envMaybe, fromVar, toVar, (.!=))
 import           Text.Read       (readMaybe)
 
 
@@ -48,7 +47,7 @@ connectInfoFromEnvWithDefault :: R.ConnectInfo -> Parser R.ConnectInfo
 connectInfoFromEnvWithDefault def = R.ConnInfo
   <$> envMaybe "REDIS_HOST" .!= R.connectHost def
   <*> pPortId
-  <*> env "REDIS_AUTH" .!= R.connectAuth def
+  <*> envMaybe "REDIS_AUTH" .!= R.connectAuth def
   <*> envMaybe "REDIS_DATABASE_INDEX" .!= R.connectDatabase def
   <*> envMaybe "REDIS_MAX_CONNECTIONS" .!= R.connectMaxConnections def
   <*>

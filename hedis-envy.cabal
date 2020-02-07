@@ -1,6 +1,6 @@
 cabal-version:      2.2
 name:               hedis-envy
-version:            0.1.0.0
+version:            0.1.0.1
 description:        Provides FromEnv instance for ConnectInfo of hedis
 homepage:           https://github.com/igrep/hedis-envy#readme
 bug-reports:        https://github.com/igrep/hedis-envy/issues
